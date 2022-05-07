@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int start = 0;
+        int end = nums.size() -1;
+        
+        while (start < end){
+            int mid = start + (end - start) / 2;
+            if (nums[mid] > nums[end])
+                start = mid + 1;
+            else if(nums[mid] < nums[end])      //bss isme yahi show krr k dekhna tha  see the question 153 --------
+                end = mid;     // agar mid element chota hota hai last wale elements se too usko end wale elements ko barabar krr dizye middle elements k sath(end = mid) agar nhi hai too end wale ko elements ko decrement krr dizye 
+            else
+                end--;      // end-- iss liye kyuki agar koi bhi elements nhi rotate hoga too uska last ka elements se ek phele wala display krr denge mtlb ki last index ko decrement krr denge 
+        }
+        
+        return nums[start];    // isliye kiye agar while loop nhi chale ga too usko humlog starting wale number ko return krr denge
+    }
+};              // see the question no 153 both are similar
